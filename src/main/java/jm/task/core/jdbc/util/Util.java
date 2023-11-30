@@ -3,22 +3,27 @@ package jm.task.core.jdbc.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Util {
     private static Connection connection;
-    public static void getConnection() {
-        try {
-            String URL = "jdbc:mysql://localhost:3306/db_for_pp";
-            String USERNAME = "pavel_kap";
-            String PASSWORD = "Alfa-Romeo008";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/db_for_pp";
+    private static final String DB_USER_NAME = "pavel_kap";
+    private static final String DB_PASSWORD = "Alfa-Romeo008";
 
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    private Util() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static Connection getConnection() {
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER_NAME, DB_PASSWORD);
             if (!connection.isClosed()) {
                 System.out.println("Соединение с БД установлено!");
             }
+            return connection;
         } catch (SQLException e) {
-            System.out.println("Не удалось загрузить класс драйвера");
+            System.out.println("Не удалось загрузить класс драйвера" + e.getMessage());
+            return null;
         }
     }
 
@@ -30,15 +35,6 @@ public class Util {
             } catch (SQLException e) {
                 System.out.println("Не удалось закрыть соединение с БД");
             }
-        }
-    }
-
-    public static Statement getStatement() {
-        try {
-            return connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
         }
     }
 
