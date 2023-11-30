@@ -18,3 +18,8 @@ l
 0src/main/java/jm/task/core/jdbc/dao/UserDao.java,9\8\98537719f21e123909a7e7550027eec65eb0241d
 h
 8src/main/java/jm/task/core/jdbc/service/UserService.java,f\7\f73e03c860134ada6f8799d5a94864e0d276fdf3
+:
+
+git remote,6\8\685f093ff205efb3fb3959e65700ddc934b49902
+<
+TaskJDBC.iml,6\8\6874deaebaee5ac83785b74ff8f5ac55a213ba3f
