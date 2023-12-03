@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class UserDaoJDBCImpl implements UserDao {
     private final Connection connection = Util.getConnection();
+
+    @Override
     public void createUsersTable() {
         try {
             try (Statement statement = connection.createStatement()) {
@@ -33,6 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
         System.out.println("БД успешно создана с помощью JDBC");
     }
 
+    @Override
     public void dropUsersTable() {
         try {
             try (Statement statement = connection.createStatement()) {
@@ -45,6 +47,7 @@ public class UserDaoJDBCImpl implements UserDao {
         System.out.println("БД успешно уничтожена с помощью JDBC");
     }
 
+    @Override
     public void saveUser(String name, String lastName, byte age) {
         try {
             try (Statement statement = connection.createStatement()) {
@@ -58,6 +61,7 @@ public class UserDaoJDBCImpl implements UserDao {
         System.out.println("User с именем – " + name + " добавлен в базу данных");
     }
 
+    @Override
     public void removeUserById(long id) {
         try {
             try (Statement statement = connection.createStatement()) {
@@ -70,6 +74,7 @@ public class UserDaoJDBCImpl implements UserDao {
         System.out.println("Пользователь с id: " + id + " успешно удалён из БД с помощью JDBC");
     }
 
+    @Override
     public List<User> getAllUsers() {
         try {
             try (Statement statement = connection.createStatement()) {
@@ -95,6 +100,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    @Override
     public void cleanUsersTable() {
         try {
             try (Statement statement = connection.createStatement()) {
